@@ -1,0 +1,8 @@
+fastapi 
+pymongo 
+uvicorn 
+python-dotenv
+bcrypt 
+pyjwt
+google-genai
+fastapi-sse
