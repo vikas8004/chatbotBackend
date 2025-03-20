@@ -1,1 +1,1 @@
-web: uvicorn app.main:app --port 1200 --reload
+web: uvicorn app.main:app --host 0.0.0.0 --port 1200 --reload
