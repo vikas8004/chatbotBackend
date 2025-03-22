@@ -54,7 +54,7 @@ async def signin(data:Request,response:Response):
             key="access_token",
             value=token,
             max_age=86400,  # 1 day
-            samesite="None",  # Required for cross-site cookies
+            samesite="Lax",  # Required for cross-site cookies
             secure=False if os.getenv("ENV") == "development" else True,  # Secure only in production
             httponly=True
         ) 
