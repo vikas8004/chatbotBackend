@@ -9,6 +9,7 @@ app = FastAPI()
 origins = [
     "http://localhost",  # Local development
     "http://localhost:5173",  # If your front end is running on port 5173
+    "https://gyani.netlify.app"
 ]
 app.add_middleware(
     CORSMiddleware,
