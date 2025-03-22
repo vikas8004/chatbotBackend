@@ -6,3 +6,4 @@ bcrypt
 pyjwt
 google-genai
 fastapi-sse
+uuid
