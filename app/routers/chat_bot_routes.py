@@ -6,8 +6,8 @@ from app.middlewares.auth_middleware import verify_jwt
 chat_bot_router=APIRouter()
 
 @chat_bot_router.post("/generate")
-def generate_bot_response(request:ContentRequest,decoded_user:dict=Depends(verify_jwt)):
-    return generate_response(request,decoded_user)
+async def generate_bot_response(request:ContentRequest,decoded_user:dict=Depends(verify_jwt)):
+    return await generate_response(request,decoded_user)
 
 # get all messages
 @chat_bot_router.get("/messages/{thread_id}")
