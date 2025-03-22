@@ -1,12 +1,13 @@
+import os
 from bson import ObjectId
 from app.models.user_model import User
 from app.database import db
 from fastapi import HTTPException, Response, status,Request
-
+from dotenv import load_dotenv
 from app.utils.bcrypt import hash_str, verify
 from app.utils.jwt import create_jwt_token
 from app.utils.conver_objectid_to_str import convert_objectid_to_str
-
+load_dotenv()
 def signup(user: User):
     try:
         # Convert user model to dictionary
@@ -52,10 +53,10 @@ async def signin(data:Request,response:Response):
         response.set_cookie(
             key="access_token",
             value=token,
-            max_age=1000*60*60*24,
-            samesite="Lax",
-            secure=True,
-            httponly=True     
+            max_age=86400,  # 1 day
+            samesite="None",  # Required for cross-site cookies
+            secure=False if os.getenv("ENV") == "development" else True,  # Secure only in production
+            httponly=True
         ) 
         found_user=convert_objectid_to_str(found_user,"_id")
         del found_user["password"]    
